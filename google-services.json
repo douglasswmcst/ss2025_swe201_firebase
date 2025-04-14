@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "167980449468",
+    "project_id": "uber-bt",
+    "storage_bucket": "uber-bt.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167980449468:android:274acfec2c8b3523549ab9",
+        "android_client_info": {
+          "package_name": "bt.super.ride"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH52Jq1ISS7Ddih_ZfZt5LmrgUfp69F7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
