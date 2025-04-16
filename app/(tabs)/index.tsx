@@ -5,9 +5,11 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { getUser } from "@/shared/services/userService";
+import React from "react";
 
 export default function HomeScreen() {
   const data = getUser();
+  console.log("DATA FROM USER SERVICE", data);
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
