@@ -6,9 +6,13 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { getUser } from "@/shared/services/userService";
 import React from "react";
+import { useStore } from "@/shared/store";
 
 export default function HomeScreen() {
   const data = getUser();
+  const userData = useStore((state) => state.user);
+  
+
   console.log("DATA FROM USER SERVICE", data);
   return (
     <ParallaxScrollView
