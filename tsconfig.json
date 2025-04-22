@@ -4,8 +4,9 @@
     "strict": true,
     "jsx": "react",
     "paths": {
-      "@/*": [
-        "./*"
+      "@/*": ["./*"],
+      "@react-native-firebase/auth": [
+        "./node_modules/@react-native-firebase/auth/dist/index.rn.d.ts"
       ]
     }
   },
@@ -13,6 +14,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "shared/store/index.js"  ]
+    "expo-env.d.ts",
+    "shared/store/index.js"
+  ]
 }
