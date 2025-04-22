@@ -11,6 +11,7 @@ import { getUser } from "@/shared/services/userService";
 import { useState, useEffect } from "react";
 // GLOBAL APPLICATION PERSISTENCE LAYER
 import { useStore } from "@/shared/store";
+import { updateDoc } from "@react-native-firebase/firestore";
 
 export default function HomeScreen() {
   const [userEmail, setUserEmail] = useState(null);
@@ -25,8 +26,12 @@ export default function HomeScreen() {
     // INVOKE THE FUNCTION TO GET USE DATA
     fetchUser();
   });
-  // const updateUser = useStore((state) => state.updateUser(data?.email));
-  // const userData = useStore((state) => state.user);
+  //
+  // console.log(updateUser);
+  const updateUser = useStore((state) => state.updateUser);
+  updateUser(userEmail);
+  const globalUserEmail = useStore((state) => state.user);
+  // console.log("userData", userData);
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -39,7 +44,11 @@ export default function HomeScreen() {
     >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">
-          Welcome! {JSON.stringify(userEmail)}
+          LOCAL STATE {JSON.stringify(userEmail)}
+        </ThemedText>
+        <ThemedText type="title">
+          GLOBAL STATE
+          {JSON.stringify(globalUserEmail)}
         </ThemedText>
         <HelloWave />
       </ThemedView>
