@@ -1,19 +1,32 @@
+import React from "react";
 import { Image, StyleSheet, Platform } from "react-native";
-
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+
+// SERVICE LAYER
 import { getUser } from "@/shared/services/userService";
-import React from "react";
+// LOCAL COMPONENT PERSISTENCE LAYER
+import { useState, useEffect } from "react";
+// GLOBAL APPLICATION PERSISTENCE LAYER
 import { useStore } from "@/shared/store";
 
 export default function HomeScreen() {
-  const data = getUser();
-  const userData = useStore((state) => state.user);
-  
+  const [userEmail, setUserEmail] = useState(null);
+  useEffect(() => {
+    const fetchUser = async () => {
+      // PRESENTATION -> SERVICE LAYER -> DATABASE LAYER
+      const data = await getUser();
+      // SERVICE LAYER -> LOCAL PERSISTENCE LAYER (THIS COMPONENT ONLY)
+      setUserEmail(data?.email);
+    };
 
-  console.log("DATA FROM USER SERVICE", data);
+    // INVOKE THE FUNCTION TO GET USE DATA
+    fetchUser();
+  });
+  // const updateUser = useStore((state) => state.updateUser(data?.email));
+  // const userData = useStore((state) => state.user);
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -25,7 +38,9 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome! {JSON.stringify(data)}</ThemedText>
+        <ThemedText type="title">
+          Welcome! {JSON.stringify(userEmail)}
+        </ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>

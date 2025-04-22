@@ -29,8 +29,8 @@ async function getUser() {
       if (doc.exists) {
         console.log("Document data:", doc.data());
         // UPDATE DATABASE RESPONSE TO STORE
-        const setUser = useStore((state) => state.updateUser(doc.data()));
-        console.log("setUser", setUser);
+        // const setUser = useStore((state) => state.updateUser(doc.data()));
+        // console.log("setUser", setUser);
 
         // RETURN USER DATA
         return doc.data();
