@@ -26,8 +26,8 @@ export default function HomeScreen() {
     // INVOKE THE FUNCTION TO GET USE DATA
     fetchUser();
   });
-  //
-  // console.log(updateUser);
+
+  // IMPORT OUR GLOBAL STATE METHODS
   const updateUser = useStore((state) => state.updateUser);
   updateUser(userEmail);
   const globalUserEmail = useStore((state) => state.user);
@@ -46,6 +46,9 @@ export default function HomeScreen() {
         <ThemedText type="title">
           LOCAL STATE {JSON.stringify(userEmail)}
         </ThemedText>
+        <HelloWave />
+      </ThemedView>
+      <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">
           GLOBAL STATE
           {JSON.stringify(globalUserEmail)}
@@ -76,7 +79,7 @@ export default function HomeScreen() {
           starter app.
         </ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
+      {/* <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
         <ThemedText>
           When you're ready, run{" "}
@@ -86,7 +89,7 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
-      </ThemedView>
+      </ThemedView> */}
     </ParallaxScrollView>
   );
 }
